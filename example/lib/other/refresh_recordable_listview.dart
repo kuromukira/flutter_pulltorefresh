@@ -628,7 +628,7 @@ class _ReorderableListContentState extends State<_ReorderableListContent>
           _wrap(finalDropArea, widget.children.length, constraints),
         );
       }
-      return SmartRefresher(
+      return RefreshContainer(
         child: ListView(
           scrollDirection: widget.scrollDirection,
           children: [
@@ -643,8 +643,8 @@ class _ReorderableListContentState extends State<_ReorderableListContent>
         enablePullUp: widget.enablePullUp,
         footer: widget.refreshFooter,
         header: widget.refreshHeader,
-        onLoading: widget.onLoading,
-        onRefresh: widget.onRefresh,
+        onPullUp: widget.onLoading,
+        onPullDown: widget.onRefresh,
       );
     });
   }

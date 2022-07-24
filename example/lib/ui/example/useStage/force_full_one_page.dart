@@ -106,14 +106,14 @@ class ForceFullExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
-      onRefresh: () async {
+      onPullDown: () async {
         await Future.delayed(const Duration(milliseconds: 500));
         _refreshController.refreshCompleted();
       },
-      onLoading: () async {
+      onPullUp: () async {
         await Future.delayed(const Duration(milliseconds: 500));
         _refreshController.loadComplete();
       },

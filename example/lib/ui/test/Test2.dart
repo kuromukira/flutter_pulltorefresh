@@ -87,13 +87,13 @@ class _Test2State extends State<Test2> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
+    return RefreshContainer(
       enablePullDown: true,
       enablePullUp: true,
       controller: _controller,
-      onRefresh: _onRefresh,
+      onPullDown: _onRefresh,
       header: MaterialClassicHeader(),
-      onLoading: _onLoading,
+      onPullUp: _onLoading,
       child: GridView.builder(
         primary: false,
         gridDelegate:

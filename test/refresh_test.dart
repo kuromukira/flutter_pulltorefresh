@@ -18,7 +18,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -47,7 +47,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -76,7 +76,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -105,7 +105,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -138,7 +138,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -169,7 +169,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -200,7 +200,7 @@ void main() {
           RefreshController(initialRefresh: false);
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -240,7 +240,7 @@ void main() {
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -283,7 +283,7 @@ void main() {
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: ClassicHeader(),
           footer: TestFooter(),
           enablePullUp: true,

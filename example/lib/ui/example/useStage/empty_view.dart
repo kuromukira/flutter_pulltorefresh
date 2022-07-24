@@ -62,11 +62,11 @@ class _RefreshWithEmptyViewState extends State<RefreshWithEmptyView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: data.length != 0,
       enablePullDown: true,
-      onRefresh: () async {
+      onPullDown: () async {
         await Future.delayed(const Duration(milliseconds: 2000));
         if (mounted)
           setState(() {

@@ -17,7 +17,7 @@ void main() {
     final RefreshController _refreshController = RefreshController();
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -28,7 +28,7 @@ void main() {
     ));
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -43,7 +43,7 @@ void main() {
     ));
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -76,7 +76,7 @@ void main() {
       });
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -99,7 +99,7 @@ void main() {
     final RefreshController _refreshController = RefreshController();
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher.builder(
+      child: RefreshContainer.builder(
         enablePullUp: true,
         builder: (BuildContext context, RefreshPhysics physics) {
           return CustomScrollView(
@@ -126,7 +126,7 @@ void main() {
     final RefreshController _refreshController = RefreshController();
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -146,7 +146,7 @@ void main() {
 
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullUp: true,
@@ -168,7 +168,7 @@ void main() {
     // check enablePullDown,enablePullUp
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullDown: true,
@@ -180,10 +180,10 @@ void main() {
           itemCount: 20,
           itemExtent: 100,
         ),
-        onRefresh: () {
+        onPullDown: () {
           logs.add("refresh");
         },
-        onLoading: () {
+        onPullUp: () {
           logs.add("loading");
         },
         controller: _refreshController,
@@ -223,7 +223,7 @@ void main() {
     final RefreshController _refreshController = RefreshController();
     int time = 0;
     await tester.pumpWidget(MaterialApp(
-      home: SmartRefresher(
+      home: RefreshContainer(
         header: TestHeader(),
         footer: TestFooter(),
         enablePullDown: true,
@@ -235,10 +235,10 @@ void main() {
           itemCount: 20,
           itemExtent: 100,
         ),
-        onRefresh: () async {
+        onPullDown: () async {
           time++;
         },
-        onLoading: () async {
+        onPullUp: () async {
           time++;
         },
         controller: _refreshController,
@@ -274,7 +274,7 @@ void main() {
     final RefreshController _refreshController = RefreshController();
     int time = 0;
     await tester.pumpWidget(MaterialApp(
-      home: SmartRefresher(
+      home: RefreshContainer(
         header: CustomHeader(
           builder: (c, m) => Container(),
           height: 60.0,
@@ -292,10 +292,10 @@ void main() {
             time++;
           },
         ),
-        onRefresh: () async {
+        onPullDown: () async {
           time++;
         },
-        onLoading: () async {
+        onPullUp: () async {
           time++;
         },
         controller: _refreshController,
@@ -336,7 +336,7 @@ void main() {
               child: Builder(
                 builder: (c2) {
                   context2 = c2;
-                  return SmartRefresher(
+                  return RefreshContainer(
                     header: CustomHeader(
                       builder: (c, m) => Container(),
                       height: 60.0,
@@ -352,8 +352,8 @@ void main() {
                       ),
                       onTap: () {},
                     ),
-                    onRefresh: () async {},
-                    onLoading: () async {},
+                    onPullDown: () async {},
+                    onPullUp: () async {},
                     controller: _refreshController,
                   );
                 },

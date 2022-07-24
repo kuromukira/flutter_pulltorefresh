@@ -58,7 +58,7 @@ class _DraggableLoadingBottomSheetState
                         color: Colors.blue[100],
                         child: StatefulBuilder(
                           builder: (BuildContext context2, setter) {
-                            return SmartRefresher(
+                            return RefreshContainer(
                               child: ListView.separated(
                                 controller: scrollController,
                                 separatorBuilder: (c, i) => Divider(),
@@ -71,7 +71,7 @@ class _DraggableLoadingBottomSheetState
                                 itemCount: items.length,
                               ),
                               controller: _controller,
-                              onLoading: () async {
+                              onPullUp: () async {
                                 await Future.delayed(
                                     Duration(milliseconds: 1000));
                                 _controller.loadComplete();

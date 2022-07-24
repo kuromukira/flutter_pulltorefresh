@@ -76,12 +76,12 @@ class Test1State extends State<Test1> {
               ),
             ],
         body: Container(
-          child: SmartRefresher(
+          child: RefreshContainer(
               controller: _refreshController,
               enablePullDown: true,
               header: WaterDropHeader(),
               enablePullUp: true,
-              onRefresh: () {
+              onPullDown: () {
                 Future.delayed(const Duration(milliseconds: 2009)).then((val) {
                   data.add(Card(
                     margin: EdgeInsets.only(
@@ -96,7 +96,7 @@ class Test1State extends State<Test1> {
                     });
                 });
               },
-              onLoading: () {
+              onPullUp: () {
                 Future.delayed(const Duration(milliseconds: 2009)).then((val) {
                   if (mounted)
                     setState(() {

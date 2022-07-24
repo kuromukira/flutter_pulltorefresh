@@ -45,16 +45,16 @@ class HideFooterManualState extends State<HideFooterManual> {
                 height: 50.0,
               ),
               Expanded(
-                child: SmartRefresher(
+                child: RefreshContainer(
                   controller: _controller,
                   enablePullUp: refresherHeight < 100.0 * strs.length,
                   //100.0 is itemExtent in SliverList
-                  onLoading: () {
+                  onPullUp: () {
                     strs.add("new");
                     if (mounted) setState(() {});
                     _controller.loadComplete();
                   },
-                  onRefresh: () {
+                  onPullDown: () {
                     strs.add("new");
                     if (mounted) setState(() {});
                     _controller.refreshCompleted();

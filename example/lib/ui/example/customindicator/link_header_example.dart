@@ -65,10 +65,10 @@ class _LinkHeaderExampleState extends State<LinkHeaderExample> {
                   bottom: 0.0,
                   left: 0.0,
                   right: 0.0,
-                  child: SmartRefresher(
+                  child: RefreshContainer(
                     controller: _refreshController,
                     header: LinkHeader(linkKey: linkKey),
-                    onRefresh: () async {
+                    onPullDown: () async {
                       await Future.delayed(Duration(milliseconds: 3000));
                       _refreshController.refreshCompleted();
                     },

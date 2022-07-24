@@ -67,14 +67,14 @@ class _CustomHeaderExampleState extends State<CustomHeaderExample>
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      child: SmartRefresher(
+      child: RefreshContainer(
         enablePullUp: true,
         controller: _refreshController,
-        onRefresh: () async {
+        onPullDown: () async {
           await Future.delayed(Duration(milliseconds: 1000));
           _refreshController.refreshCompleted();
         },
-        onLoading: () async {
+        onPullUp: () async {
           await Future.delayed(Duration(milliseconds: 1000));
           count += 4;
           setState(() {});

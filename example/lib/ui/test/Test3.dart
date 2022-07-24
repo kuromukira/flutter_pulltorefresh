@@ -143,7 +143,7 @@ class Test3State extends State<Test3> with TickerProviderStateMixin {
       footerTriggerDistance: -80,
       maxUnderScrollExtent: 60,
       enableLoadingWhenNoData: true,
-      child: SmartRefresher(
+      child: RefreshContainer(
         enablePullUp: true,
         enablePullDown: true,
         controller: _refreshController,
@@ -161,7 +161,7 @@ class Test3State extends State<Test3> with TickerProviderStateMixin {
             ),
           ),
         ),
-        onRefresh: () async {
+        onPullDown: () async {
           print("onRefresh");
           await Future.delayed(const Duration(milliseconds: 3000));
           data.add(Container(
@@ -183,7 +183,7 @@ class Test3State extends State<Test3> with TickerProviderStateMixin {
           ],
           physics: PageScrollPhysics(),
         ),
-        onLoading: () async {
+        onPullUp: () async {
           await Future.delayed(const Duration(milliseconds: 1000));
           print("onLoading");
           _refreshController.loadNoData();

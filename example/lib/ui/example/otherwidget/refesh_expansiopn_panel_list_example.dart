@@ -22,7 +22,7 @@ class RefreshExpansionPanelListState extends State<RefreshExpansionPanelList> {
   RefreshController _controller = RefreshController();
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _controller,
       child: ListView(
         shrinkWrap: true,

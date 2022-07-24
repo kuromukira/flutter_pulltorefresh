@@ -127,7 +127,7 @@ class _RefreshListViewState extends State<RefreshListView> {
 
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
+    return RefreshContainer(
       enablePullDown: true,
       enablePullUp: true,
       header: WaterDropHeader(),
@@ -152,8 +152,8 @@ class _RefreshListViewState extends State<RefreshListView> {
         },
       ),
       controller: _refreshController,
-      onRefresh: _onRefresh,
-      onLoading: _onLoading,
+      onPullDown: _onRefresh,
+      onPullUp: _onLoading,
       child: ListView.builder(
         physics: ClampingScrollPhysics(),
         itemBuilder: (c, i) => Card(child: Center(child: Text(items[i]))),

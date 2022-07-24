@@ -43,7 +43,7 @@ typedef Widget FooterBuilder(BuildContext context, LoadStatus? mode);
 ///      },
 ///    )
 /// ```
-/// If you need to listen overScroll event do some animate,you should use [OnOffsetChange] callback in [SmartRefresher]
+/// If you need to listen overScroll event do some animate,you should use [OnOffsetChange] callback in [RefreshContainer]
 /// finally,If your indicator contain more complex animation and need to update frequently ,I suggest you extends [RefreshIndicator] to implements
 ///
 /// See also

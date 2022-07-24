@@ -134,7 +134,7 @@ class TwoLevelHeader extends StatelessWidget {
       iconPos: iconPos,
       outerBuilder: (child) {
         final RefreshStatus? mode =
-            SmartRefresher.of(context)!.controller.headerStatus;
+            RefreshContainer.of(context)!.controller.headerStatus;
         final bool isTwoLevel = (mode == RefreshStatus.twoLevelClosing ||
             mode == RefreshStatus.twoLeveling ||
             mode == RefreshStatus.twoLevelOpening);
@@ -143,7 +143,7 @@ class TwoLevelHeader extends StatelessWidget {
             decoration: !isTwoLevel
                 ? (decoration ?? BoxDecoration(color: Colors.redAccent))
                 : null,
-            height: SmartRefresher.ofState(context)!.viewportExtent,
+            height: RefreshContainer.ofState(context)!.viewportExtent,
             alignment: isTwoLevel ? null : Alignment.bottomCenter,
             child: isTwoLevel
                 ? twoLevelWidget

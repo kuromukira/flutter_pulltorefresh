@@ -77,12 +77,12 @@ class _TapButtonRefreshExampleState extends State<TapButtonRefreshExample> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: SmartRefresher(
+      body: RefreshContainer(
         controller: _refreshController,
         enablePullUp: data.length != 0,
         enablePullDown: _enablePullDown,
         header: ClassicHeader(),
-        onRefresh: () async {
+        onPullDown: () async {
           await Future.delayed(const Duration(milliseconds: 2000));
           if (mounted)
             setState(() {

@@ -158,7 +158,7 @@ class _OnlyListViewState extends State<OnlyListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       key: _refresherKey,
       controller: _refreshController,
       enablePullUp: true,
@@ -168,7 +168,7 @@ class _OnlyListViewState extends State<OnlyListView> {
         loadStyle: LoadStyle.ShowWhenLoading,
         completeDuration: Duration(milliseconds: 500),
       ),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -185,7 +185,7 @@ class _OnlyListViewState extends State<OnlyListView> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 180));
 //        for (int i = 0; i < 10; i++) {
@@ -227,12 +227,12 @@ class _OnlyGridViewState extends State<OnlyGridView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
       child: buildCtn(),
       header: ClassicHeader(),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -250,7 +250,7 @@ class _OnlyGridViewState extends State<OnlyGridView> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
         for (int i = 0; i < 10; i++) {
@@ -312,12 +312,12 @@ class _NoScrollableState extends State<NoScrollable> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
       child: buildCtn(),
       header: WaterDropHeader(),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -335,7 +335,7 @@ class _NoScrollableState extends State<NoScrollable> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
         for (int i = 0; i < 10; i++) {
@@ -384,12 +384,12 @@ class _SliverAppBarWithListState extends State<SliverAppBarWithList> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
       child: buildCtn(),
       header: WaterDropHeader(),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -407,7 +407,7 @@ class _SliverAppBarWithListState extends State<SliverAppBarWithList> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
         for (int i = 0; i < 10; i++) {
@@ -462,12 +462,12 @@ class _GridAndListState extends State<GridAndList> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
       child: buildCtn(),
       header: WaterDropHeader(),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -485,7 +485,7 @@ class _GridAndListState extends State<GridAndList> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
         for (int i = 0; i < 10; i++) {
@@ -552,12 +552,12 @@ class _SwiperAndListState extends State<SwiperAndList> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
       controller: _refreshController,
       enablePullUp: true,
       child: buildCtn(),
       header: WaterDropHeader(),
-      onRefresh: () async {
+      onPullDown: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
 
@@ -575,7 +575,7 @@ class _SwiperAndListState extends State<SwiperAndList> {
         }
       */
       },
-      onLoading: () async {
+      onPullUp: () async {
         //monitor fetch data from network
         await Future.delayed(Duration(milliseconds: 1000));
         for (int i = 0; i < 10; i++) {

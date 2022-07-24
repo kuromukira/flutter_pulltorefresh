@@ -161,16 +161,16 @@ class GifIndicatorExample1State extends State<GifIndicatorExample1> {
       // two attrs enable footer implements the effect in header default
       enableBallisticLoad: false,
       footerTriggerDistance: -80,
-      child: SmartRefresher(
+      child: RefreshContainer(
         controller: _controller,
         enablePullUp: true,
         header: GifHeader1(),
         footer: GifFooter1(),
-        onRefresh: () async {
+        onPullDown: () async {
           await Future.delayed(Duration(milliseconds: 2000));
           _controller.refreshCompleted();
         },
-        onLoading: () async {
+        onPullUp: () async {
           await Future.delayed(Duration(milliseconds: 2000));
           _controller.loadFailed();
         },

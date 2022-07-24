@@ -85,11 +85,11 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
     return Column(
       children: <Widget>[
         Container(
-          child: SmartRefresher(
+          child: RefreshContainer(
             enablePullDown: true,
             enablePullUp: true,
             controller: _controller1,
-            onRefresh: _onRefresh,
+            onPullDown: _onRefresh,
             footer: ClassicFooter(
               iconPos: IconPosition.top,
               outerBuilder: (child) {
@@ -112,7 +112,7 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
                 );
               },
             ),
-            onLoading: _onLoading,
+            onPullUp: _onLoading,
             child: ListView.builder(
               itemCount: data.length,
               scrollDirection: Axis.horizontal,
@@ -124,11 +124,11 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
         ),
         Expanded(
           child: Container(
-            child: SmartRefresher(
+            child: RefreshContainer(
               enablePullDown: true,
               enablePullUp: true,
               controller: _controller2,
-              onRefresh: () async {
+              onPullDown: () async {
                 _controller2.refreshCompleted();
               },
               footer: ClassicFooter(
@@ -143,7 +143,7 @@ class _HorizontalRefreshState extends State<HorizontalRefresh>
                 },
               ),
               header: WaterDropMaterialHeader(),
-              onLoading: () async {
+              onPullUp: () async {
                 await Future.delayed(const Duration(milliseconds: 1000));
                 if (mounted) setState(() {});
                 _controller2.loadComplete();

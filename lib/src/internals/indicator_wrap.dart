@@ -283,7 +283,7 @@ abstract class RefreshIndicatorState<T extends RefreshIndicator>
       if (configuration!.enableRefreshVibrate) {
         HapticFeedback.vibrate();
       }
-      if (refresher!.onRefresh != null) refresher!.onRefresh!();
+      if (refresher!.onPullDown != null) refresher!.onPullDown!();
     } else if (mode == RefreshStatus.twoLevelOpening) {
       floating = true;
       refresherState!.setCanDrag(false);
@@ -451,8 +451,8 @@ abstract class LoadIndicatorState<T extends LoadIndicator> extends State<T>
       if (configuration!.enableLoadMoreVibrate) {
         HapticFeedback.vibrate();
       }
-      if (refresher!.onLoading != null) {
-        refresher!.onLoading!();
+      if (refresher!.onPullUp != null) {
+        refresher!.onPullUp!();
       }
       if (widget.loadStyle == LoadStyle.ShowWhenLoading) {
         floating = true;
@@ -571,10 +571,10 @@ abstract class LoadIndicatorState<T extends LoadIndicator> extends State<T>
 ///
 /// help to finish the work that the header indicator and footer indicator need to do
 mixin IndicatorStateMixin<T extends StatefulWidget, V> on State<T> {
-  SmartRefresher? refresher;
+  RefreshContainer? refresher;
 
   RefreshConfiguration? configuration;
-  SmartRefresherState? refresherState;
+  RefreshContainerState? refresherState;
 
   bool _floating = false;
 
@@ -619,8 +619,8 @@ mixin IndicatorStateMixin<T extends StatefulWidget, V> on State<T> {
 
   void _updateListener() {
     configuration = RefreshConfiguration.of(context);
-    refresher = SmartRefresher.of(context);
-    refresherState = SmartRefresher.ofState(context);
+    refresher = RefreshContainer.of(context);
+    refresherState = RefreshContainer.ofState(context);
     RefreshNotifier<V>? newMode = V == RefreshStatus
         ? refresher!.controller.headerMode as RefreshNotifier<V>?
         : refresher!.controller.footerMode as RefreshNotifier<V>?;
@@ -642,7 +642,7 @@ mixin IndicatorStateMixin<T extends StatefulWidget, V> on State<T> {
   void initState() {
     // TODO: implement initState
     if (V == RefreshStatus) {
-      SmartRefresher.of(context)?.controller.headerMode?.value =
+      RefreshContainer.of(context)?.controller.headerMode?.value =
           RefreshStatus.idle;
     }
     super.initState();
