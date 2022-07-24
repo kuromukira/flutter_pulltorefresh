@@ -22,7 +22,7 @@ void main() {
       final RefreshController _refreshController = RefreshController();
       await tester.pumpWidget(MaterialApp(
         theme: ThemeData(platform: TargetPlatform.android),
-        home: SmartRefresher(
+        home: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -80,7 +80,7 @@ void main() {
       final RefreshController _refreshController = RefreshController();
       await tester.pumpWidget(MaterialApp(
         theme: ThemeData(platform: TargetPlatform.android),
-        home: SmartRefresher(
+        home: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -109,7 +109,7 @@ void main() {
       final RefreshController _refreshController = RefreshController();
       await tester.pumpWidget(MaterialApp(
         theme: ThemeData(platform: TargetPlatform.android),
-        home: SmartRefresher(
+        home: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -157,7 +157,7 @@ void main() {
     await tester.pumpWidget(MaterialApp(
       theme: ThemeData(platform: TargetPlatform.android),
       home: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -199,7 +199,7 @@ void main() {
     final RefreshController refreshController = RefreshController();
     await tester.pumpWidget(MaterialApp(
       home: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -221,7 +221,7 @@ void main() {
         (refreshController.position!.physics as RefreshPhysics).updateFlag, 1);
     await tester.pumpWidget(MaterialApp(
       home: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -248,7 +248,7 @@ void main() {
 
     await tester.pumpWidget(MaterialApp(
       home: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -270,7 +270,7 @@ void main() {
         (refreshController.position!.physics as RefreshPhysics).updateFlag, 1);
     await tester.pumpWidget(MaterialApp(
       home: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullUp: true,
@@ -298,7 +298,7 @@ void main() {
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: CustomFooter(
             loadStyle: LoadStyle.ShowAlways,
@@ -327,7 +327,7 @@ void main() {
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: RefreshConfiguration(
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: CustomFooter(
             loadStyle: LoadStyle.HideAlways,

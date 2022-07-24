@@ -44,7 +44,7 @@ class _ShimmerIndicatorExampleState extends State<ShimmerIndicatorExample> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SmartRefresher(
+    return RefreshContainer(
         header: ShimmerHeader(
           text: Text(
             "PullToRefresh",
@@ -64,11 +64,11 @@ class _ShimmerIndicatorExampleState extends State<ShimmerIndicatorExample> {
           itemExtent: 100.0,
           itemBuilder: (c, i) => Card(),
         ),
-        onRefresh: () async {
+        onPullDown: () async {
           await Future.delayed(Duration(milliseconds: 2000));
           _refreshController.refreshCompleted();
         },
-        onLoading: () async {
+        onPullUp: () async {
           await Future.delayed(Duration(milliseconds: 2000));
           for (int i = 0; i < 10; i++) {
             data.add("1");

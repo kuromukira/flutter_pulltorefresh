@@ -113,7 +113,7 @@ enum LoadStyle {
 /// * [RefreshConfiguration], A global configuration for all SmartRefresher in subtrees
 ///
 /// * [RefreshController], A controller controll header and footer  indicators state
-class SmartRefresher extends StatefulWidget {
+class RefreshContainer extends StatefulWidget {
   /// Refresh Content
   ///
   /// notice that: If child is  extends ScrollView,It will help you get the internal slivers and add footer and header in it.
@@ -152,13 +152,13 @@ class SmartRefresher extends StatefulWidget {
   ///
   /// when the callback is happening,you should use [RefreshController]
   /// to end refreshing state,else it will keep refreshing state
-  final VoidCallback? onRefresh;
+  final VoidCallback? onPullDown;
 
   /// callback when footer loading more data
   ///
   /// when the callback is happening,you should use [RefreshController]
   /// to end loading state,else it will keep loading state
-  final VoidCallback? onLoading;
+  final VoidCallback? onPullUp;
 
   /// callback when header ready to twoLevel
   ///
@@ -203,7 +203,7 @@ class SmartRefresher extends StatefulWidget {
   /// such as AnimatedList,RecordableList,doesn't allow to put into child,it will wrap it into SliverToBoxAdapter
   /// If you don't need pull down refresh ,just enablePullDown = false,
   /// If you  need pull up load ,just enablePullUp = true
-  SmartRefresher(
+  RefreshContainer(
       {Key? key,
       required this.controller,
       this.child,
@@ -212,8 +212,8 @@ class SmartRefresher extends StatefulWidget {
       this.enablePullDown: true,
       this.enablePullUp: false,
       this.enableTwoLevel: false,
-      this.onRefresh,
-      this.onLoading,
+      this.onPullDown,
+      this.onPullUp,
       this.onTwoLevel,
       this.dragStartBehavior,
       this.primary,
@@ -233,15 +233,15 @@ class SmartRefresher extends StatefulWidget {
   /// for example,NestedScrollView is a StalessWidget,it's headerSliversbuilder can return a slivers array,So if we want to do
   /// refresh above NestedScrollVIew,we must use this constrctor to implements refresh above NestedScrollView,but for now,NestedScrollView
   /// can not support overscroll out of edge
-  SmartRefresher.builder({
+  RefreshContainer.builder({
     Key? key,
     required this.controller,
     required this.builder,
     this.enablePullDown: true,
     this.enablePullUp: false,
     this.enableTwoLevel: false,
-    this.onRefresh,
-    this.onLoading,
+    this.onPullDown,
+    this.onPullUp,
     this.onTwoLevel,
   })  : header = null,
         footer = null,
@@ -256,22 +256,22 @@ class SmartRefresher extends StatefulWidget {
         primary = null,
         super(key: key);
 
-  static SmartRefresher? of(BuildContext? context) {
-    return context!.findAncestorWidgetOfExactType<SmartRefresher>();
+  static RefreshContainer? of(BuildContext? context) {
+    return context!.findAncestorWidgetOfExactType<RefreshContainer>();
   }
 
-  static SmartRefresherState? ofState(BuildContext? context) {
-    return context!.findAncestorStateOfType<SmartRefresherState>();
+  static RefreshContainerState? ofState(BuildContext? context) {
+    return context!.findAncestorStateOfType<RefreshContainerState>();
   }
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return SmartRefresherState();
+    return RefreshContainerState();
   }
 }
 
-class SmartRefresherState extends State<SmartRefresher> {
+class RefreshContainerState extends State<RefreshContainer> {
   RefreshPhysics? _physics;
   bool _updatePhysics = false;
   double viewportExtent = 0;
@@ -482,7 +482,7 @@ class SmartRefresherState extends State<SmartRefresher> {
   }
 
   @override
-  void didUpdateWidget(SmartRefresher oldWidget) {
+  void didUpdateWidget(RefreshContainer oldWidget) {
     // TODO: implement didUpdateWidget
     if (widget.controller != oldWidget.controller) {
       widget.controller.headerMode!.value =
@@ -555,9 +555,9 @@ class SmartRefresherState extends State<SmartRefresher> {
 ///
 /// See also:
 ///
-/// * [SmartRefresher],a widget help you attach refresh and load more function easily
+/// * [RefreshContainer],a widget help you attach refresh and load more function easily
 class RefreshController {
-  SmartRefresherState? _refresherState;
+  RefreshContainerState? _refresherState;
 
   /// header status mode controll
   RefreshNotifier<RefreshStatus>? headerMode;
@@ -600,7 +600,7 @@ class RefreshController {
     this.footerMode = RefreshNotifier(initialLoadStatus ?? LoadStatus.idle);
   }
 
-  void _bindState(SmartRefresherState state) {
+  void _bindState(RefreshContainerState state) {
     assert(_refresherState == null,
         "Don't use one refreshController to multiple SmartRefresher,It will cause some unexpected bugs mostly in TabBarView");
     _refresherState = state;
@@ -823,7 +823,7 @@ class RefreshController {
 ///
 /// see also:
 ///
-/// * [SmartRefresher], a widget help attach the refresh and load more function
+/// * [RefreshContainer], a widget help attach the refresh and load more function
 class RefreshConfiguration extends InheritedWidget {
   final Widget child;
 

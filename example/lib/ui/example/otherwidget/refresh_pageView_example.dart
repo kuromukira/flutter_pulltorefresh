@@ -61,7 +61,7 @@ class PageViewExampleState extends State<PageViewExample>
         }
         return false;
       },
-      child: SmartRefresher(
+      child: RefreshContainer(
         enablePullUp: true,
         enablePullDown: true,
         footer: ClassicFooter(
@@ -69,7 +69,7 @@ class PageViewExampleState extends State<PageViewExample>
         ),
         controller: _refreshController,
         header: MaterialClassicHeader(),
-        onRefresh: () async {
+        onPullDown: () async {
           print("onRefresh");
           await Future.delayed(const Duration(milliseconds: 4000));
 
@@ -89,7 +89,7 @@ class PageViewExampleState extends State<PageViewExample>
             ]))
           ],
         ),
-        onLoading: () {
+        onPullUp: () {
           print("onload");
           Future.delayed(const Duration(milliseconds: 2000)).then((val) {
             _refreshController.loadComplete();

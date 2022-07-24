@@ -136,7 +136,7 @@ class Test4State extends State<Test4> with TickerProviderStateMixin {
 //    stream.addListener(ImageStreamListener((ImageInfo image, bool sync) { isSync = sync; }));
     return RefreshConfiguration.copyAncestor(
       context: context,
-      child: SmartRefresher.builder(
+      child: RefreshContainer.builder(
         enablePullUp: true,
         enablePullDown: true,
         builder: (context, physics) {
@@ -178,12 +178,12 @@ class Test4State extends State<Test4> with TickerProviderStateMixin {
             ClassicFooter(),
           ]);
         },
-        onRefresh: () async {
+        onPullDown: () async {
           print("onRefresh");
           await Future.delayed(Duration(milliseconds: 1300));
           _refreshController.refreshCompleted();
         },
-        onLoading: () async {
+        onPullUp: () async {
           await Future.delayed(Duration(milliseconds: 1300));
           _refreshController.loadComplete();
         },

@@ -23,7 +23,7 @@ Future<void>? buildNotFullList(tester, bool reverse, Axis direction,
     home: Container(
       height: 600,
       width: 800,
-      child: SmartRefresher(
+      child: RefreshContainer(
         header: header,
         footer: footer,
         enablePullUp: true,
@@ -184,7 +184,7 @@ void main() {
         home: Container(
           height: 600,
           width: 800,
-          child: SmartRefresher(
+          child: RefreshContainer(
             header: ClassicHeader(),
             footer: ClassicFooter(
               onClick: () {
@@ -233,7 +233,7 @@ void main() {
         home: Container(
           height: 600,
           width: 800,
-          child: SmartRefresher(
+          child: RefreshContainer(
             header: ClassicHeader(),
             footer: CustomFooter(
               builder: (c, m) {

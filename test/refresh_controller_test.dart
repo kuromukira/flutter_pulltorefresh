@@ -18,7 +18,7 @@ Widget buildRefresher(RefreshController controller, {int count: 20}) {
       child: Container(
         width: 375.0,
         height: 690.0,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enableTwoLevel: true,
@@ -84,15 +84,15 @@ void testRequestFun(bool full) {
       child: Container(
         width: 375.0,
         height: 690.0,
-        child: SmartRefresher(
+        child: RefreshContainer(
           header: TestHeader(),
           footer: TestFooter(),
           enablePullDown: true,
           enablePullUp: true,
-          onRefresh: () {
+          onPullDown: () {
             timerr++;
           },
-          onLoading: () {
+          onPullUp: () {
             timerr++;
           },
           child: ListView.builder(

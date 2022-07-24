@@ -52,13 +52,13 @@ class _ConvertFooterState extends State<ConvertFooter> {
         footerTriggerDistance: -80,
         maxUnderScrollExtent: 60,
         context: context,
-        child: SmartRefresher(
+        child: RefreshContainer(
           enablePullUp: true,
           footer: ClassicFooter(
             loadStyle: LoadStyle.ShowWhenLoading,
           ),
           child: buildCtn(),
-          onLoading: () async {
+          onPullUp: () async {
             await Future.delayed(Duration(milliseconds: 1000));
             for (int i = 0; i < 5; i++) data.add("1");
 

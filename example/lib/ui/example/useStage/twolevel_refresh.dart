@@ -75,7 +75,7 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
               offstage: _tabIndex != 0,
               child: LayoutBuilder(
                 builder: (_, c) {
-                  return SmartRefresher(
+                  return RefreshContainer(
                     header: TwoLevelHeader(
                       textStyle: TextStyle(color: Colors.white),
                       displayAlignment: TwoLevelDisplayAlignment.fromTop,
@@ -121,11 +121,11 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                     enableTwoLevel: true,
                     enablePullDown: true,
                     enablePullUp: true,
-                    onLoading: () async {
+                    onPullUp: () async {
                       await Future.delayed(Duration(milliseconds: 2000));
                       _refreshController1.loadComplete();
                     },
-                    onRefresh: () async {
+                    onPullDown: () async {
                       await Future.delayed(Duration(milliseconds: 2000));
                       _refreshController1.refreshCompleted();
                     },
@@ -138,7 +138,7 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
             ),
             Offstage(
               offstage: _tabIndex != 1,
-              child: SmartRefresher(
+              child: RefreshContainer(
                 header: ClassicHeader(),
                 child: CustomScrollView(
                   physics: ClampingScrollPhysics(),
@@ -159,7 +159,7 @@ class _TwoLevelExampleState extends State<TwoLevelExample> {
                 ),
                 controller: _refreshController2,
                 enableTwoLevel: true,
-                onRefresh: () async {
+                onPullDown: () async {
                   await Future.delayed(Duration(milliseconds: 2000));
                   _refreshController2.refreshCompleted();
                 },
@@ -221,7 +221,7 @@ class TwoLevelWidget extends StatelessWidget {
                 color: Colors.white,
               ),
               onTap: () {
-                SmartRefresher.of(context).controller.twoLevelComplete();
+                RefreshContainer.of(context).controller.twoLevelComplete();
               },
             ),
             alignment: Alignment.bottomLeft,

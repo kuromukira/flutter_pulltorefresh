@@ -92,9 +92,9 @@ class _QQChatListState extends State<QQChatList> {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  child: SmartRefresher(
+                  child: RefreshContainer(
                     enablePullDown: false,
-                    onLoading: () async {
+                    onPullUp: () async {
                       await Future.delayed(Duration(milliseconds: 1000));
                       data.add(_MessageItem(
                         content: "Xxxxxxxxxxxxxx",

@@ -78,7 +78,7 @@ class _IndicatorActivityState extends State<IndicatorActivity> {
       ),
       body: Builder(
         builder: (c) {
-          return SmartRefresher(
+          return RefreshContainer(
               child: ListView.builder(
                 itemBuilder: (c, i) => items[i],
                 itemExtent: 100.0,
@@ -86,8 +86,8 @@ class _IndicatorActivityState extends State<IndicatorActivity> {
                 reverse: widget.reverse,
                 itemCount: items.length,
               ),
-              onRefresh: _onRefresh,
-              onLoading: () {
+              onPullDown: _onRefresh,
+              onPullUp: () {
                 _onLoading(c);
               },
               header: widget.header,

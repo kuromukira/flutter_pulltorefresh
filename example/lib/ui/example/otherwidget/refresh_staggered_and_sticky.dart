@@ -138,12 +138,12 @@ class RefreshStaggeredAndStickyState extends State<RefreshStaggeredAndSticky>
     ));
     return LayoutBuilder(
       builder: (i, c) {
-        return SmartRefresher(
+        return RefreshContainer(
           enablePullUp: true,
           enablePullDown: true,
           controller: _refreshController,
           header: MaterialClassicHeader(),
-          onRefresh: () async {
+          onPullDown: () async {
             print("onRefresh");
             await Future.delayed(const Duration(milliseconds: 4000));
             if (mounted) setState(() {});
@@ -152,7 +152,7 @@ class RefreshStaggeredAndStickyState extends State<RefreshStaggeredAndSticky>
           child: CustomScrollView(
             slivers: slivers,
           ),
-          onLoading: () {
+          onPullUp: () {
             print("onload");
             Future.delayed(const Duration(milliseconds: 2000)).then((val) {
               length += 10;
